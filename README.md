@@ -1,10 +1,5 @@
 # Agentia — Multi-Agent AI Research Platform
 
-<p align="center">
-  <img src="./docs/screenshot-home.png" width="49%" alt="Landing page">
-  <img src="./docs/screenshot-research.png" width="49%" alt="Research in progress">
-</p>
-
 Ask a question → three agents (Planner, Executor, Synthesizer) plan it,
 research it with live web search, and write it up as a cited report.
 Login/logout with JWTs, MongoDB for persistence, Redis for caching repeat
