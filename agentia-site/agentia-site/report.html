@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report — Agentia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="js/config.js"></script>
+<script src="js/auth-guard.js"></script>
+</head>
+<body data-page="library">
+<canvas id="agent-scene-ambient" aria-hidden="true"></canvas>
+<div id="shell-header"></div>
+
+<main class="app-shell-main">
+  <div class="wrap">
+    <a href="library.html" class="btn btn-ghost" style="margin-bottom:24px;">← Back to library</a>
+
+    <div id="report-loading">
+      <div class="skeleton" style="height:34px;width:60%;margin-bottom:20px;"></div>
+      <div class="skeleton" style="height:16px;margin-bottom:10px;"></div>
+      <div class="skeleton" style="height:16px;margin-bottom:10px;width:90%;"></div>
+      <div class="skeleton" style="height:16px;width:75%;"></div>
+    </div>
+
+    <div id="report-error" class="empty-state" hidden></div>
+
+    <div class="panel" id="report-panel" hidden>
+      <div class="result-meta">
+        <span class="badge" id="result-cached-badge" style="display:none;">served from cache</span>
+        <span class="badge" id="result-date-badge" style="display:none;"></span>
+      </div>
+
+      <ul class="subtopic-chips" id="subtopic-chips"></ul>
+
+      <div id="pdf-export-root">
+        <h1 id="result-query" style="font-family:var(--font-display); font-size:1.6rem; margin:0 0 20px;"></h1>
+        <div class="report-body" id="report-body"></div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn btn-line" id="save-btn" type="button">☆ Save to library</button>
+        <button class="btn btn-line" id="pdf-btn" type="button">Download PDF</button>
+        <a class="btn btn-ghost" href="research.html">Ask another question →</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="shell-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/scene-ambient.js"></script>
+<script src="js/page-report.js"></script>
+</body>
+</html>

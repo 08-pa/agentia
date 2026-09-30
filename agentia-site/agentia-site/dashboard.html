@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Agentia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="js/config.js"></script>
+<script src="js/auth-guard.js"></script>
+</head>
+<body data-page="dashboard">
+<canvas id="agent-scene-ambient" aria-hidden="true"></canvas>
+<div id="shell-header"></div>
+
+<main class="app-shell-main">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="page-eyebrow">Dashboard</p>
+      <h1 class="page-title" id="greeting">Welcome back</h1>
+      <p class="page-sub">Start a new research run, or pick up a saved report.</p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <p class="stat-label">Reports run</p>
+        <p class="stat-value" id="stat-reports">—</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Saved reports</p>
+        <p class="stat-value" id="stat-saved">—</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Queries in history</p>
+        <p class="stat-value" id="stat-history">—</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Start something new</h2>
+      </div>
+      <p class="page-sub" style="margin-bottom:20px;">Ask a question — Planner, Executor, and Synthesizer will handle the rest.</p>
+      <a href="research.html" class="btn btn-solid btn-lg">New research query &nbsp;→</a>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Recent reports</h2>
+        <a href="library.html" class="btn btn-ghost">View library →</a>
+      </div>
+      <div id="recent-reports"><div class="skeleton" style="height:52px;margin-bottom:1px;"></div><div class="skeleton" style="height:52px;"></div></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Recent activity</h2>
+      </div>
+      <div id="recent-history"><div class="skeleton" style="height:44px;margin-bottom:1px;"></div><div class="skeleton" style="height:44px;"></div></div>
+    </div>
+  </div>
+</main>
+
+<div id="shell-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/scene-ambient.js"></script>
+<script src="js/page-dashboard.js"></script>
+</body>
+</html>

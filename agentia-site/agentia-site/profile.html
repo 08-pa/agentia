@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile — Agentia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="js/config.js"></script>
+<script src="js/auth-guard.js"></script>
+</head>
+<body data-page="profile">
+<canvas id="agent-scene-ambient" aria-hidden="true"></canvas>
+<div id="shell-header"></div>
+
+<main class="app-shell-main">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="page-eyebrow">Profile</p>
+      <h1 class="page-title">Your account</h1>
+      <p class="page-sub">Session details, straight from the token the backend issued you.</p>
+    </div>
+
+    <div class="panel" id="profile-panel">
+      <div class="skeleton" style="height:20px;width:40%;margin-bottom:14px;"></div>
+      <div class="skeleton" style="height:20px;width:55%;margin-bottom:14px;"></div>
+      <div class="skeleton" style="height:20px;width:30%;"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h2>Recent queries</h2></div>
+      <div id="history-list"><div class="skeleton" style="height:44px;margin-bottom:1px;"></div><div class="skeleton" style="height:44px;"></div></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h2>Session</h2></div>
+      <p class="page-sub" style="margin-bottom:18px;">Logging out invalidates this token on the backend (Redis blacklist) — not just a local clear.</p>
+      <button class="btn btn-line" id="logout-btn" type="button">Log out</button>
+    </div>
+  </div>
+</main>
+
+<div id="shell-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/scene-ambient.js"></script>
+<script src="js/page-profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New research — Agentia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="js/config.js"></script>
+<script src="js/auth-guard.js"></script>
+</head>
+<body data-page="research">
+<canvas id="agent-scene-ambient" aria-hidden="true"></canvas>
+<div id="shell-header"></div>
+
+<main class="app-shell-main">
+  <div class="wrap">
+    <div class="page-head">
+      <p class="page-eyebrow">New research</p>
+      <h1 class="page-title">Ask a question</h1>
+      <p class="page-sub">Planner breaks it down, Executor searches the live web, Synthesizer writes the report.</p>
+    </div>
+
+    <div class="panel">
+      <form id="research-form">
+        <div class="field">
+          <label for="query">Research question</label>
+          <textarea id="query" name="query" rows="2" minlength="3" placeholder="e.g. What are the grid-scale risks of small modular reactors?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-solid btn-lg" id="run-btn">Run research &nbsp;→</button>
+      </form>
+    </div>
+
+    <!-- live pipeline, shown once a run starts -->
+    <div class="panel" id="pipeline-panel" hidden>
+      <div class="panel-head"><h2>Pipeline</h2><span class="badge" id="pipeline-badge">running</span></div>
+      <div class="pipeline-live" id="pipeline-live">
+        <div class="pipeline-row" data-stage="plan">
+          <div class="stage-dot"></div>
+          <div class="stage-text">
+            <p class="stage-name">PlannerAgent</p>
+            <p class="stage-detail">Breaking your question into subtopics&hellip;</p>
+          </div>
+        </div>
+        <div class="pipeline-row" data-stage="gather">
+          <div class="stage-dot"></div>
+          <div class="stage-text">
+            <p class="stage-name">ExecutorAgent</p>
+            <p class="stage-detail">Searching the live web per subtopic&hellip;</p>
+          </div>
+        </div>
+        <div class="pipeline-row" data-stage="synth">
+          <div class="stage-dot"></div>
+          <div class="stage-text">
+            <p class="stage-name">SynthesizerAgent</p>
+            <p class="stage-detail">Writing the cited report&hellip;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- result -->
+    <div class="panel" id="result-panel" hidden>
+      <div class="result-meta">
+        <span class="badge" id="result-cached-badge" style="display:none;">served from cache</span>
+        <span class="badge" id="result-id-badge"></span>
+      </div>
+
+      <ul class="subtopic-chips" id="subtopic-chips"></ul>
+
+      <div id="pdf-export-root">
+        <h2 id="result-query" style="font-family:var(--font-display); font-size:1.4rem; margin:0 0 18px;"></h2>
+        <div class="report-body" id="report-body"></div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn btn-line" id="save-btn" type="button">☆ Save to library</button>
+        <button class="btn btn-line" id="pdf-btn" type="button">Download PDF</button>
+        <a class="btn btn-ghost" href="library.html">View in library →</a>
+        <button class="btn btn-ghost" id="new-query-btn" type="button">Ask another question</button>
+      </div>
+    </div>
+
+    <div class="form-error" id="research-error" style="margin-top:20px;"></div>
+  </div>
+</main>
+
+<div id="shell-footer"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/scene-pipeline.js"></script>
+<script src="js/page-research.js"></script>
+</body>
+</html>
